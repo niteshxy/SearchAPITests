@@ -11,6 +11,8 @@ def get_page_key(pages, title_text):
         if page["title"] == title_text:
             key = page["key"]
             break
+    if not key:
+        print(f"Key not found for{title_text}")
     return key
 
 

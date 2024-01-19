@@ -6,7 +6,7 @@ This repo contains automated api tests for Wikimedia api. The tests are written 
 These tests can either be run with Python or can be run in docker as explained below. Checkout this repo on your local machine.
 
 ### Steps to run with Python
-To run these tests, Python 3.11 should be installed on the machine.
+To run these tests, Python 3 (ideally > 3.9) and pip should be installed on the machine.
 
 To check the python version run the following command - 
 

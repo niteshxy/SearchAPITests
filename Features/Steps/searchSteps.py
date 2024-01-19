@@ -1,4 +1,4 @@
-from Helpers.requestsHelper import search_endpoint_url, save_response
+from Helpers.requestsHelper import search_endpoint_url, save_response, get_search_response
 from Helpers.searchHelper import check_value_in_attribute, check_search_string_in_page
 from Utilities.TestBase import TestBase
 import requests
@@ -7,14 +7,15 @@ from behave import given, when, then
 
 @given('A Client of the API')
 def step_given_client(context):
-    pass
+    params = {"q": "test", "limit": 10}
+    response = requests.get(search_endpoint_url, params=params)
+    assert response.status_code == 200, f"Unexpected response code: {response.status_code}"
 
 
 @when('A search for pages containing "{search_string}" is executed')
 def step_search_on_a_page(context, search_string):
-    params = {"q": search_string, "limit": TestBase.SearchLimitMax}
-    response = requests.get(search_endpoint_url, params=params)
-    context.response = response.json()
+    response = get_search_response(search_string)
+    context.response = response
 
 
 @then('A page with the "{attribute}" "{expected_value}" is found')

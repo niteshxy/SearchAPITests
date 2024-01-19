@@ -4,4 +4,5 @@ class TestBase:
     Languages = ["en"]
     SearchLimitMax = 100
     SEARCH_ENDPOINT = "/search/page"
+    PAGE_ENDPOINT = "/page"
 

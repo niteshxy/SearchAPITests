@@ -1,0 +1,8 @@
+
+services:
+  search-api-tests:
+    image: "python:alpine"
+    command: sh -c 'pip install -r requirements.txt && behave'
+    volumes:
+      - .:/usr/src/app
+    working_dir: /usr/src/app

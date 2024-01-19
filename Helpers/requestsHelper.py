@@ -1,5 +1,4 @@
 import requests
-
 from Utilities.TestBase import TestBase
 
 search_endpoint_url = f"{TestBase.BaseUrl}{TestBase.ApiVersion}/wikipedia/{TestBase.Languages[0]}{TestBase.SEARCH_ENDPOINT}"
@@ -17,7 +16,7 @@ def get_search_response(search_string):
 def get_page_response(page_key):
     try:
         response = requests.get(f"{page_endpoint_url}/{page_key}/bare")
-        response.raise_for_status()  # Raise an HTTPError for bad responses (4xx, 5xx)
+        response.raise_for_status()
         response_json = response.json()
         return response_json
     except requests.exceptions.HTTPError as http_err:
@@ -25,7 +24,6 @@ def get_page_response(page_key):
     except requests.exceptions.RequestException as req_err:
         print(f"Request error occurred: {req_err}")
     return None
-    #return response.json()
 
 
 def save_response(response):
